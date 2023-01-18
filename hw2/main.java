@@ -6,12 +6,12 @@ import java.util.Scanner;
 public class main {
 
     public static void main(String[] args) {
-        Tiger tiger=new Tiger("1", "1", "1", "1", "1", "1");
-        Stork stork=new Stork("1", "1", "1", "1", "1", "1", "1");
-        Cat cat=new Cat("1", "1", "1", "1", "1", "1", "1", "1", "1", false);
-        Chicken chicken=new Chicken("1", "1", "1", "1", "1", "1", "1");
-        Dog dog=new Dog("1", "1", "1", "1", "1", "1", "1", "1", "1", false);
-        Wolf wolf=new Wolf("1", "1", "1", "1", "1", "1", false);
+        Tiger tiger=new Tiger("90см", "40кг", "Black", "Рррр", "Сафари", "12.12.2001");
+        Stork stork=new Stork("150см", "9кг", "Black", "Кхкхкх", "Сафари", "12.12.2001", "10 метров");
+        Cat cat=new Cat("50см", "2кг", "Black", "Мяу", "Орли", "Сиамский", "от Бешенства", "1", "12.12.2010", false);
+        Chicken chicken=new Chicken("40см", "4кг", "Black", "Ку-карику", "Поле", "12.12.2001", "0 метров");
+        Dog dog=new Dog("70см", "15кг", "Black", "Гав", "Шарик", "Такса", "1", "1", "12.12.2010", false);
+        Wolf wolf=new Wolf("80см", "20кг", "Black", "Уууу", "Лес", "12.12.2001", false);
         ArrayList<Animal> animals=new ArrayList<Animal>();
         animals.add(tiger);
         animals.add(stork);
@@ -24,8 +24,6 @@ public class main {
         zoo.addInZoo(dog);
         zoo.addInZoo(dog);
 
-        // System.out.println();
-        // pp.printAllInfo();
         boolean act=true;
         while(act){
             System.out.println("Управление зоопарком : \nДля просмотра всей информации о животных в зоопарке введите 1\n"+
@@ -68,7 +66,7 @@ public class main {
                     }
                     break;
                 case(7):
-                    System.out.println("Poka");
+                    System.out.println("Пока");
                     act=false;
                     break;
                 default:
@@ -78,14 +76,3 @@ public class main {
         }
     }
 }
-// 1.Добавить животное в зоопарк(добавляет новое животное в структуру данных, для массива использовать следующий алгоритм https://gospodaretsva.com/urok-27-vstavka-elementov-v-massiv.html , для стека и очереди вы алгоритмы уже знаете)
-
-// 2.Убирает животное с номером i из зоопарка(Использовать этот алгоритм https://gospodaretsva.com/urok-26-udalenie-elementa-iz-odnomernogo-massiva.html для удаления из массива, для удаления из стека и очереди вы алгоритмы знаете)
-
-// 3.Посмотреть информацию о животном с номером i
-
-// 4.Заставить животное с номером i издать звук
-
-// 5.Напечатать информацию о животных, которые есть на данный момент в зоопарке
-
-// 6.Заставить всех животных, которые на данный момент есть в зоопарке, издать звук
