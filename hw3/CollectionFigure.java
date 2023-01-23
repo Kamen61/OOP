@@ -118,8 +118,8 @@ public class CollectionFigure implements Comparator<Figure> {
     }
 
     public void replaceFigure(){
-        allInformationOutput();
         System.out.println("\nВведите номер фигуры по порядку, которую вы ходите поменять");
+        allInformationOutput();
         Scanner scan=new Scanner(System.in);
         int index=scan.nextInt()-1;
         if (index>-1 && index<=arrayCollection.size()){
