@@ -3,24 +3,26 @@ package HW.hw4;
 import java.util.Arrays;
 import java.util.List;
 
-public class ArrayPersonal<U> implements Comparable<U> {
+public class ArrayPersonal<U extends Comparable<U>> {
     // INIT_SIZE - размер массива
     // array - массив
     // pointer - количество элементов в массиве
     private final int INIT_SIZE = 16;
-    private U[] array;
+    private Object[] array;
     private int pointer = 0; 
 
     // 1. Конструктор без параметров – конструктор по умолчанию, проводяющий базовую иницаилизацию массива
     public ArrayPersonal(){
-        this.array=(U[]) new List[INIT_SIZE];
+        this.array=new Object[INIT_SIZE];
     }
 
     // 2. Конструктор с параметром T[] – конструктор, который проводит инициализацию и 
     // заполняет массив данными, пришедшими из параметра
     public ArrayPersonal( U[] arr){
-        this.array=(U[]) new List[arr.length];
-        this.array=arr;
+        this.array=new Object[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            array[i]=arr[i];
+        }
         this.pointer=arr.length;
     }
 
@@ -63,7 +65,7 @@ public class ArrayPersonal<U> implements Comparable<U> {
         U minimum = (U) array[0];
         for (int i = 1; i < pointer; i++) {
             U temp = (U) array[i];
-            if (((Comparable<U>) minimum).compareTo(temp) > 0) {
+            if (minimum.compareTo(temp) > 0) {
                 minimum = temp;
             }
         }
@@ -79,7 +81,7 @@ public class ArrayPersonal<U> implements Comparable<U> {
         U maximum = (U) array[0];
         for (int i = 1; i < pointer; i++) {
             U temp = (U) array[i];
-            if (((Comparable<U>) maximum).compareTo(temp) < 0) {
+            if (maximum.compareTo(temp) < 0) {
                 maximum = temp;
             }
         }
@@ -118,7 +120,7 @@ public class ArrayPersonal<U> implements Comparable<U> {
     // 9. Проверка наличия элемента в массиве. Возвращает true, если элемент в массиве есть, false – нет.
     public boolean availabilityElem(U elem){
         boolean result=false;
-        for (U u : array) {
+        for (Object u :  array) {
             if (u==elem)
                 return result=true;
         }
@@ -131,8 +133,8 @@ public class ArrayPersonal<U> implements Comparable<U> {
             for (int j = 1; j < pointer - i; j++) {
                 U next = (U) array[j];
                 U previous = (U) array[j - 1];
-                if (((Comparable<U>) next).compareTo(previous) < 0) {
-                    U temp = array[j];
+                if (next.compareTo(previous) < 0) {
+                    U temp = (U) array[j];
                     array[j] = array[j - 1];
                     array[j - 1] = temp;
                 }
@@ -146,10 +148,10 @@ public class ArrayPersonal<U> implements Comparable<U> {
             while (j > 0) {
                 U jth = (U) array[j];
                 U jMinusOneth = (U) array[j - 1];
-                if (((Comparable<U>) jMinusOneth).compareTo(jth) < 0) {
+                if (jMinusOneth.compareTo(jth) < 0) {
                     break;
                 }
-                U temp = array[j];
+                U temp = (U) array[j];
                 array[j] = array[j - 1];
                 array[j - 1] = temp;
                 j--;
@@ -161,11 +163,11 @@ public class ArrayPersonal<U> implements Comparable<U> {
         for (int i = 0; i < pointer - 1; i++) {
             int minIndex = i;
             for (int j = i + 1; j < pointer; j++) {
-                if (((Comparable<U>) array[j]).compareTo(array[minIndex]) < 0) {
+                if (((U) array[j]).compareTo((U) array[minIndex]) < 0) {
                     minIndex = j;
                 }
             }
-            U temp = array[i];
+            U temp = (U) array[i];
             array[i] = array[minIndex];
             array[minIndex] = temp;
         }
@@ -173,7 +175,7 @@ public class ArrayPersonal<U> implements Comparable<U> {
     // 13. Получение элемента массива по индексу
     public U indexOF(int index)throws IndexException{
         checkIndex(index, false);
-        return array[index];
+        return (U) array[index];
     }
 
     // 14. Задание значения элементу массива с заданным индексом
@@ -192,22 +194,13 @@ public class ArrayPersonal<U> implements Comparable<U> {
     public  void resize(int length){
         Object[] newArray = new Object[length];
         System.arraycopy(array, 0, newArray, 0, pointer);
-        this.array=(U[]) newArray;
+        this.array=newArray;
     }
 
 
     // 15. Печать массива на экран
     @Override
     public String toString() {
-        // String result="[";
-        // for (U list : array) {
-        //     if (list!=null){
-        //         result+= " "+list+",";
-        
-        //     }
-        // }
-        // result=result.substring(0,result.length()-1)+" ]";
-        // return result;
         StringBuilder sb = new StringBuilder("[");
         for (int i = 0; i < pointer - 1; i++) {
             sb.append(array[i]);
@@ -217,11 +210,6 @@ public class ArrayPersonal<U> implements Comparable<U> {
         sb.append(']');
         return sb.toString();
 
-    }
-
-    @Override
-    public int compareTo(U o) {
-        return 0;
     }
 
     // Исключения
