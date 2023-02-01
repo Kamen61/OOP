@@ -1,4 +1,4 @@
-package HW.hw2;
+package HW.hw2.Animals.Base;
 
 public abstract class Animal {
     private String height;
@@ -13,8 +13,8 @@ public abstract class Animal {
         this.voice=voice;
     }
 
-    public void sound(){
-        System.out.println(this.voice);
+    public String sound(){
+        return this.voice;
     }
 
     @Override

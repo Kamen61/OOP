@@ -1,4 +1,6 @@
-package HW.hw2;
+package HW.hw2.Animals.Wild;
+
+import HW.hw2.Animals.Base.Animal;
 
 public abstract class WildAnimal extends Animal {
     private String habitat;

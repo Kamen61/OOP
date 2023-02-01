@@ -1,12 +1,12 @@
-package HW.hw2;
+package HW.hw2.Animals.Wild;
 
 public class Tiger extends WildAnimal{
     public Tiger(String height,String weight,String eyeColor,String voice,String habitat,String discoveryDate){
         super(height, weight, eyeColor, voice, habitat, discoveryDate);
     }
 
-    // @Override
-    // public String toString() {
-    //     return super.toString();
-    // }
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }

@@ -1,4 +1,4 @@
-package HW.hw2;
+package HW.hw2.Animals.Wild;
 
 public class Wolf extends WildAnimal{
     private boolean leader;

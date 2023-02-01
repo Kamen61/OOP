@@ -1,22 +1,21 @@
-package HW.hw2;
+package HW.hw2.Animals.Petss;
 
-public abstract class Pet extends Animal{
-    private String name;
+import HW.hw2.Animals.Base.Animal;
+
+public abstract class Pets extends Animal {
+    public String name;
     private String breed;
     private String vaccines;
     private String colorWool;
     private String birthDate;
 
-    public Pet(String height,String weight,String eyeColor,String voice,String name,String breed,String vaccines,String colorWool,String birthDate){
+    public Pets(String height,String weight,String eyeColor,String voice,String name,String breed,String vaccines,String colorWool,String birthDate){
         super(height, weight, eyeColor, voice);
         this.name=name;
         this.breed=breed;
         this.vaccines=vaccines;
         this.colorWool=colorWool;
         this.birthDate=birthDate;
-    }
-    public void caress(){
-        System.out.println(String.format("%s проявлять ласку.", this.name));
     }
 
     @Override

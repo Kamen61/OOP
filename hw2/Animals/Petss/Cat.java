@@ -1,6 +1,8 @@
-package HW.hw2;
+package HW.hw2.Animals.Petss;
 
-public class Cat extends Pet {
+import HW.hw2.Animals.Interface.Pet;
+
+public class Cat extends Pets implements Pet{
     private boolean wool;
 
     @Override
@@ -11,5 +13,11 @@ public class Cat extends Pet {
     public Cat(String height,String weight,String eyeColor,String voice,String name,String breed,String vaccines,String colorWool,String birthDate,boolean wool){
         super(height,weight,eyeColor,voice,name,breed,vaccines,colorWool,birthDate);
         this.wool=wool;
+    }
+
+    @Override
+    public String caress() {
+        return String.format("%s проявляет ласку ", this.name);
+        
     }
 }
